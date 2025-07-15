@@ -5,30 +5,30 @@ Ce dépôt contient le code et les scripts liés au mémoire de maîtrise.
 
 # Tests signaux stationnaires
 
-•	Fichiers pertinents :
+### •	Fichiers pertinents :
 
 o	Tests_SignauxSynthetiques_BESS.m, PostTrait_Freq.m, FFTtest.m et FiltredefrequencesPost.m
 
 o	CompconceFTSTFT.mat : Cette matrice contient les résultats en fréquence de l’analyse spectrale de ConceFT-STFT pour une résolution de 0.025/Hz
 
-•	Figures et tableaux générées : 
+### •	Figures et tableaux générées : 
 
 o	Signal synthétique : Tableaux 6 à 9 et figure 20 (tracer sur une même figure les résultats consignés dans les tableaux)
 
 o	Signal expérimental : Tableaux 12 à 15 et figure 29
 
 
-# Tests signal non-stationnaire synthétique
+## Tests signal non-stationnaire synthétique
 
-•	Fichiers pertinents : Tests_SignauxSynthetiques_BESS.m et FFTtest.m
+### •	Fichiers pertinents : Tests_SignauxSynthetiques_BESS.m et FFTtest.m
 
-•	Figures générées : Figures 22 à 26
+### •	Figures générées : Figures 22 à 26
 
 
 
-# Tests signal non-stationnaire expérimental
+## Tests signal non-stationnaire expérimental
 
-•	Fichiers pertinents : 
+### •	Fichiers pertinents : 
 
 o	Dossier EvenementHydro > TestEvenementHydro.m
 
@@ -38,10 +38,10 @@ o	Conceft-STFT-0_025.mat : cette matrice contient les résultats en fréquence d
 
 o	Figure HODMD (figure 35)
 
-•	Figures générées: Figures 33 à 39 et figure 40 (Mettre tous les tracés sur une même figure).
+### •	Figures générées: Figures 33 à 39 et figure 40 (Mettre tous les tracés sur une même figure).
 
 
-# NB:
+## NB:
 
 •	 CompSTFT= SST-STFT
 
