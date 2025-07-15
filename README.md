@@ -63,5 +63,4 @@ Le fichier `diary` (taille : 4930 MB) n’est pas inclus dans ce dépôt car i
 
 ### 📌 Où copier le fichier `diary` ?
 
-Une fois téléchargé, placez le fichier dans le répertoire racine du projet (au même niveau que ce fichier `README.md`), c’est-à-dire :
-
+Une fois téléchargé, placez le fichier dans le répertoire racine du projet (au même niveau que ce fichier `README.md`).
