@@ -8,11 +8,13 @@ Ce dépôt contient le code et les scripts liés au mémoire de maîtrise.
 ### •	Fichiers pertinents :
 
 Tests_SignauxSynthetiques_BESS.m, PostTrait_Freq.m, FFTtest.m et FiltredefrequencesPost.m
+
 CompconceFTSTFT.mat : Cette matrice contient les résultats en fréquence de l’analyse spectrale de ConceFT-STFT pour une résolution de 0.025/Hz
 
 ### •	Figures et tableaux générées : 
 
 Signal synthétique : Tableaux 6 à 9 et figure 20 (tracer sur une même figure les résultats consignés dans les tableaux)
+
 Signal expérimental : Tableaux 12 à 15 et figure 29
 
 
@@ -30,8 +32,11 @@ Figures 22 à 26
 
 ### •	Fichiers pertinents : 
 Dossier EvenementHydro > TestEvenementHydro.m
+
 Fréquence-SST-STFT-0_001.mat : cette matrice contient les résultats en fréquence de l’analyse spectrale de SST-STFT pour une résolution de 0.001/Hz (figure 36)
+
 Conceft-STFT-0_025.mat : cette matrice contient les résultats en fréquence de l’analyse spectrale de ConceFT-STFT pour une résolution de 0.025/Hz (figure 37)
+
 Figure HODMD (figure 35)
 
 ### •	Figures générées: 
