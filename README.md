@@ -4,12 +4,10 @@ Ce dépôt contient le code et les scripts liés au mémoire de maîtrise.
 
 ## 📁 Fichier `diary`
 
-Le fichier `diary` (taille : 718 MB) n’est pas inclus dans ce dépôt car il dépasse la limite autorisée par GitHub.
+Le fichier `diary` (taille : 4930 MB) n’est pas inclus dans ce dépôt car il dépasse la limite autorisée par GitHub.
 
 🔗 Vous pouvez le télécharger ici :  
-👉 [Lien de téléchargement du fichier diary]()
-
-> Remplace le lien ci-dessus par ton lien réel (Google Drive, Dropbox, OneDrive, etc.).
+👉 [Lien de téléchargement du fichier diary](https://drive.google.com/file/d/1zp2808H9ffzS9xTIB1QqzScO6oZBa-iB/view?usp=drive_link)
 
 ### 📌 Où copier le fichier `diary` ?
 
