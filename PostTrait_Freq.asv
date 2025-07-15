@@ -1,0 +1,154 @@
+% % Normalisation de la matrice ConceFT
+% ScalMax = max(max(abs(ConceFT)));
+% ConceFT = ConceFT / ScalMax;
+% 
+% % Initialisation des vecteurs pour stocker les résultats
+% frequencies = [];
+% amplitudes = [];
+% phases = [];
+% 
+% % Parcours de chaque instant (colonne)
+% for t = 1:size(ConceFT, 2)
+%     % Recherche des pics dans le spectre fréquentiel à l'instant t
+%     [pks, locs] = findpeaks(abs(ConceFT(:, t)), 'MinPeakHeight', 0.01);
+%     
+%     % Extraction des fréquences, amplitudes et phases pour les pics détectés
+%     freqs = tfrsqtic(locs);  % Fréquences correspondant aux pics
+%     amps = pks;              % Amplitudes des pics
+%     phs = angle(ConceFT(locs, t)) * 180/pi + 90;  % Phases des pics
+%     
+%     % Stockage des résultats
+%     frequencies = [frequencies; freqs];
+%     amplitudes = [amplitudes; amps];
+%     phases = [phases; phs];
+% end
+% 
+% % Affichage des résultats
+% results = [frequencies amplitudes phases];
+% disp('Fréquence - Amplitude - Phase');
+% disp(results);
+
+% % Normalisation correcte de la matrice ConceFT
+% ScalMax = max(max(abs(ConceFT))); 
+% ConceFT = ConceFT / ScalMax;
+% % Détection des pics dans TOUTES les colonnes pour capturer l’évolution temporelle
+% [MaxAmp, I] = max(abs(ConceFT), [], 2); % Trouve l’amplitude max par fréquence
+% ScalMax = max(MaxAmp);
+% MaxAmp = MaxAmp / ScalMax; % Normalisation pour éviter la suppression de composants faibles
+% % Recherche des pics temporels significatifs (dans le domaine fréquentiel)
+% [pk, loc] = findpeaks(MaxAmp, 'MinPeakHeight', 0.01); 
+% % Récupérer les indices temporels pour chaque fréquence détectée
+% indtime = I(loc); % `I(loc)` donne les indices temporels où le max est atteint
+% % Vérification des indices pour éviter les erreurs d’indexation
+% validIdx = (loc <= size(ConceFT, 1)) & (indtime <= size(ConceFT, 2));
+% loc = loc(validIdx);
+% indtime = indtime(validIdx);
+% % Conversion en indices linéaires pour accéder aux bons coefficients
+% idxLinear = sub2ind(size(ConceFT), loc, indtime); 
+% % Extraction des phases associées
+% Phase = unwrap(rad2deg(angle(ConceFT(idxLinear))))+90;
+% % Stockage des résultats (fréquence, amplitude, phase) en suivant l’évolution temporelle
+% frequencies= tfrsqtic(loc)
+% Resultat = [frequencies pk Phase];
+% % Affichage des résultats
+% disp('Fréquence - Amplitude - Phase');
+% disp(Resultat);
+
+
+%xm=0.2*sin(5*pi*2*time)+0.1*cos(10*pi*2*time)+cos(30*pi
+mid= length(time)/2;
+ScalMax=max(max(abs(ConceFT(:,mid))));ConceFT=ConceFT/ScalMax;
+[pks,locs]=findpeaks(abs(ConceFT(:,mid)),'MinPeakHeight',.01/4); %Je prends l'index un parque le signal est en régime permanent
+
+%Résultats:
+Resultats=[tfrsqtic(locs) pks abs(ConceFT(locs,mid)) angle(ConceFT(locs,mid))*180/pi+90]
+Delta=9;ij=[];fij=[];aij=[];sij=[];
+
+
+for il=1:length(locs)
+    ij=[locs(il)-Delta:locs(il) locs(il)+1:locs(il)+Delta]; %Bandes spectrales
+    if(ij(1)<=0) break;end
+    %ij=ij(ij>0)
+    aij=[aij abs(ConceFT(ij,mid))];fij=[fij tfrsqtic(ij)];
+   if(il==1) figure;end
+   plot(fij(:,il),aij(:,il));
+   if(il==1) hold;end
+    [amax,imax]=max(aij(:,il));sij{il}=['Freq=',num2str(fij(imax,il)),'Hz;A=',num2str(amax),'pu'];
+end;grid; hold;legend(sij);
+
+figure;
+subplot(211); plot(tfrsqtic,abs(ConceFT(:,mid))); grid;axis tight; xlabel('Hz'); %snapshot 
+title(['t=',num2str(time(mid)),'sec']);ylabel('pu')
+subplot(212); plot(tfrsqtic,angle(ConceFT(:,mid))*180/pi); grid;axis tight; xlabel('Hz'); %snapshot 
+title(['t=',num2str(time(mid)),'sec']);ylabel('Deg');
+% % % 
+% % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % 
+% results = [tfrsqtic(locs) pks abs(ConceFT(locs,mid)) angle(ConceFT(locs,mid))*180/pi+90];
+% 
+% columnNames = {'Frequency (Hz)', 'Amplitude', 'Absolute Amplitude', 'Phase (degrees)'};
+% 
+% %exportLongVector(columnNames, results, 20,path);
+% 
+% results(:, 4) = deg2rad(results(:, 4));
+% 
+% comp_dc=mean(xm);
+% [rmse, mae, rmse_percentage, mae_percentage,r] = analyze_signal_error(xm, results, time,comp_dc,path);
+% 
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % 
+% function [rmse, mae, rmse_percentage, mae_percentage,r] = analyze_signal_error(original_signal, extracted_results, time,comp_dc,path)
+% %     ANALYZE_SIGNAL_ERROR
+% %     Calcule RMSE, MAE et leurs pourcentages entre un signal original
+% %     symbolique et un signal reconstruit à partir de paramètres extraits,
+% %     et affiche les résultats sous le graphique.
+%     
+% %     Entrées :
+% %       - extracted_results : Table des paramètres [Frequency, Amplitude, Phase (rad)]
+% %       - time : Vecteur de temps (échantillons)
+% %     
+% %     Sorties :
+% %       - rmse : Root Mean Square Error
+% %       - mae : Mean Absolute Error
+% %       - rmse_percentage : RMSE en pourcentage
+% %       - mae_percentage : MAE en pourcentage
+% %       
+% %     Reconstruire le signal approché à partir des résultats extraits
+%     reconstructed_signal = 0;
+%     reconstructed_signal = comp_dc; % Initialisation
+%     for i = 1:size(extracted_results, 1)
+%         freq = extracted_results(i, 1); % Fréquence (Hz)
+%         amp = extracted_results(i, 2);  % Amplitude
+%         phase = extracted_results(i, 4); % Phase (rad)
+%         reconstructed_signal = reconstructed_signal + amp * sin(2*pi*freq*time + phase);
+%     end
+% 
+%      reconstructed_signal = reconstructed_signal; %comp_dc* ones(size(time));
+% 
+% %     Évaluer les signaux sur le vecteur temps fourni
+%     original_signal = double(original_signal);
+%     approx_signal = double(reconstructed_signal);
+% 
+% %     Calcul des erreurs
+%     error = original_signal - approx_signal;
+%     rmse = sqrt(mean(error.^2)); % Erreur quadratique moyenne
+%     mae = mean(abs(error)); % Erreur absolue moyenne
+%     R = corrcoef(original_signal, approx_signal);
+%     r=R(1,2);
+%     disp(R)
+% %     Calcul des erreurs en pourcentage
+%     max_amplitude = max(abs(original_signal)); % Amplitude maximale du signal original
+%     rmse_percentage = (rmse) * 100
+%     mae_percentage = (mae ) * 100
+% 
+% %      Tracer les signaux
+%     figure;
+%     plot(time, original_signal, 'b', 'LineWidth', 1.5); hold on;
+%     plot(time, approx_signal, 'g', 'LineWidth', 1);%reconstructed_signal
+%     legend('Signal original', 'Signal reconstruit');
+%     title('Comparaison entre le signal original et reconstruit');
+%     xlabel('Temps (s)');
+%     ylabel('Amplitude');
+%     grid on;
+% 
+% end

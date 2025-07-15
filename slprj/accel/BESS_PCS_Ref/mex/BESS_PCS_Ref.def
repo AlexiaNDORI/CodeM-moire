@@ -1,0 +1,4 @@
+LIBRARY ..\..\..\..\BESS_PCS_Ref_acc.mexw64
+EXPORTS
+    mexFunction
+    mexfilerequiredapiversion
