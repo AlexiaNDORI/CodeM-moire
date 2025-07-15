@@ -2,6 +2,7 @@
 
 Ce dépôt contient le code et les scripts liés au mémoire de maîtrise.
 
+
 Tests signaux stationnaires
 
 •	Fichiers pertinents :
@@ -16,11 +17,14 @@ o	Signal synthétique : Tableaux 6 à 9 et figure 20 (tracer sur une même figur
 
 o	Signal expérimental : Tableaux 12 à 15 et figure 29
 
+
 Tests signal non-stationnaire synthétique
 
 •	Fichiers pertinents : Tests_SignauxSynthetiques_BESS.m et FFTtest.m
 
 •	Figures générées : Figures 22 à 26
+
+
 
 Tests signal non-stationnaire expérimental
 
@@ -35,6 +39,7 @@ o	Conceft-STFT-0_025.mat : cette matrice contient les résultats en fréquence d
 o	Figure HODMD (figure 35)
 
 •	Figures générées: Figures 33 à 39 et figure 40 (Mettre tous les tracés sur une même figure).
+
 
 NB:
 
