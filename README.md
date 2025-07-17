@@ -15,7 +15,7 @@ CompconceFTSTFT.mat : Cette matrice contient les résultats en fréquence de l�
 
 Signal synthétique : Tableaux 6 à 9 et figure 20 (tracer sur une même figure les résultats consignés dans les tableaux)
 
-Signal expérimental : Tableaux 12 à 15 et figure 29
+Signal expérimental : Tableaux 12 à 15 et figure 33
 
 
 ## Tests signal non-stationnaire synthétique
@@ -33,14 +33,14 @@ Figures 22 à 26
 ### •	Fichiers pertinents : 
 Dossier EvenementHydro > TestEvenementHydro.m
 
-Fréquence-SST-STFT-0_001.mat : cette matrice contient les résultats en fréquence de l’analyse spectrale de SST-STFT pour une résolution de 0.001/Hz (figure 36)
+Fréquence-SST-STFT-0_001.mat : cette matrice contient les résultats en fréquence de l’analyse spectrale de SST-STFT pour une résolution de 0.001/Hz (figure 39)
 
-Conceft-STFT-0_025.mat : cette matrice contient les résultats en fréquence de l’analyse spectrale de ConceFT-STFT pour une résolution de 0.025/Hz (figure 37)
+Conceft-STFT-0_025.mat : cette matrice contient les résultats en fréquence de l’analyse spectrale de ConceFT-STFT pour une résolution de 0.025/Hz (figure 40)
 
-Figure HODMD (figure 35)
+Figure HODMD (figure 38)
 
 ### •	Figures générées: 
-Figures 33 à 39 et figure 40 (Mettre tous les tracés sur une même figure).
+Figures 37 à 42 et figure 43 (Mettre tous les tracés sur une même figure).
 
 
 ## NB:
